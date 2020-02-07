@@ -6,10 +6,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import net.iesseveroochoa.manuelmartinez.pokemon06.R;
 import net.iesseveroochoa.manuelmartinez.pokemon06.model.Pokemon;
@@ -38,10 +38,10 @@ public class PokemonApiAdapter extends RecyclerView.Adapter<PokemonApiAdapter.Po
         if (listaPokemon != null) {
             //mostramos los valores en el cardview
             final Pokemon pokemon = listaPokemon.get(position);
-            holder.tvNombre.setText(pokemon.getNombre());
+            holder.tvNombreApi.setText(pokemon.getNombre());
 
             //utilizamos Glide para mostrar la imagen. Lo vemos más abajo
-            cargaImagen(holder.ivImagenPokemon, pokemon.getUri());
+            cargaImagen(holder.ivImagenPokemonApi, pokemon.getUri());
             //guardamos el pokemon actual
             holder.pokemon = pokemon;
         }
@@ -86,16 +86,16 @@ public class PokemonApiAdapter extends RecyclerView.Adapter<PokemonApiAdapter.Po
 
     public class PokemonViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvNombre;
-        private ImageView ivImagenPokemon;
+        private TextView tvNombreApi;
+        private ImageView ivImagenPokemonApi;
         private ImageView ivComprar;
         //guardamos el pokemon
         private Pokemon pokemon;
 
         public PokemonViewHolder(@NonNull final View itemView) {
             super(itemView);
-            tvNombre = itemView.findViewById(R.id.tvNombre);
-            ivImagenPokemon = itemView.findViewById(R.id.ivImagenPokemon);
+            tvNombreApi = itemView.findViewById(R.id.tvNombreApi);
+            ivImagenPokemonApi = itemView.findViewById(R.id.ivImagenPokemonApi);
             ivComprar = itemView.findViewById(R.id.ivComprar);
             //creamos el listener para el botón de comprar
             ivComprar.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +111,7 @@ public class PokemonApiAdapter extends RecyclerView.Adapter<PokemonApiAdapter.Po
         public Pokemon getPokemon() {
             return pokemon;
         }
+
 
     }
 

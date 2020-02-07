@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-
 import net.iesseveroochoa.manuelmartinez.pokemon06.model.Pokemon;
 import net.iesseveroochoa.manuelmartinez.pokemon06.repository.PokemonRepository;
 
@@ -21,13 +20,12 @@ public class PokemonApiViewModel extends AndroidViewModel {
     public PokemonApiViewModel(@NonNull Application application) {
         super(application);
         mRepository = PokemonRepository.getInstance(application);
-        //asignamos el LiveData de los pokemon para observarlo en la actividad
-        //cuando cambie y mostrar el recyclerView
+
         mAllPokemons = mRepository.getListaPokemonApiLiveData();
     }
 
     public void getListaSiguientePokemonApi() {
-        //si ya tenemos 40 pokemon, traemos los a partir del 40
+        //si ya tenemos 40 pokemon, traemos los siguientes a partir del 40
         List<Pokemon> listaPokemon = mAllPokemons.getValue();
         Pokemon ultimoPokemon = listaPokemon.get(listaPokemon.size() - 1);
         int pokemonIndiceDesde = ultimoPokemon.getId();

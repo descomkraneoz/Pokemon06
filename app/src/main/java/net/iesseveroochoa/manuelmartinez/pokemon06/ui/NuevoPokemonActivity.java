@@ -3,25 +3,20 @@ package net.iesseveroochoa.manuelmartinez.pokemon06.ui;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.iesseveroochoa.manuelmartinez.pokemon06.R;
 import net.iesseveroochoa.manuelmartinez.pokemon06.adapters.PokemonApiAdapter;
 import net.iesseveroochoa.manuelmartinez.pokemon06.model.Pokemon;
-import net.iesseveroochoa.manuelmartinez.pokemon06.utils.Utils;
 import net.iesseveroochoa.manuelmartinez.pokemon06.viewmodels.PokemonApiViewModel;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static net.iesseveroochoa.manuelmartinez.pokemon06.utils.Utils.definirFormatoReciclerView;
@@ -32,6 +27,7 @@ public class NuevoPokemonActivity extends AppCompatActivity {
     private PokemonApiViewModel pokemonViewModel;
     private RecyclerView rvListaPokemon;
     private PokemonApiAdapter adapter;
+    private FloatingActionButton fabGuardar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +38,7 @@ public class NuevoPokemonActivity extends AppCompatActivity {
         setTitle("Nuevo Pokemon");
 
         //RECYCLER_VIEW
-        rvListaPokemon = findViewById(R.id.rvListaPokemon);
+        rvListaPokemon = findViewById(R.id.rvListaPokemonApi);
         //creamos el adaptador
         adapter = new PokemonApiAdapter();
         rvListaPokemon.setAdapter(adapter);
@@ -59,6 +55,7 @@ public class NuevoPokemonActivity extends AppCompatActivity {
             public void onChanged(List<Pokemon> pokemons) {
                 //actualizamos el RecyclerView con la nueva lista
                 adapter.setListaPokemon(pokemons);
+                pokemonViewModel.getListaSiguientePokemonApi();
             }
         });
 
@@ -73,6 +70,8 @@ public class NuevoPokemonActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     public void dialogoNuevoPokemon(final Pokemon p){
@@ -96,7 +95,9 @@ public class NuevoPokemonActivity extends AppCompatActivity {
         dialogo.show();
     }
 
-    @Override
+
+
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -150,6 +151,6 @@ public class NuevoPokemonActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 }

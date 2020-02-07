@@ -28,8 +28,8 @@ public class Pokemon implements Parcelable {
     public static final String uriIMAGEN="uri";
     public static final String FECHA_COMPRA="fechacompra";
     //base de la url donde se encuentra la imagen del pokemon
-    //public static final String urlIMAGEN="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
-    public static final String urlIMAGEN="https://github.com/PokeAPI/sprites/tree/master/sprites/pokemon";
+    public static final String urlIMAGEN = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+    //public static final String urlIMAGEN="https://github.com/PokeAPI/sprites/tree/master/sprites/pokemon";
 
     /**
      * Añidir las propiedades del pokemon, en las que además indicamos como
